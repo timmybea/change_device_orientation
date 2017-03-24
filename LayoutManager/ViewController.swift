@@ -69,16 +69,12 @@ class ViewController: UIViewController {
     
     func setupViewsPortrait(withSize size: CGSize) {
         
-        let navHeight = (navigationController?.navigationBar.frame.height)! + 20 //extra 20 for status bar
+        let navHeight = (navigationController?.navigationBar.frame.height)! + 20 //extra 20 for status bar height
 
-        //Yellow View
         yellowView.frame = CGRect(x: 20, y: navHeight + 20, width: size.width - 40, height: (size.height - navHeight) / 2 - 30)
         
-        
-        //Green View
         greenView.frame = CGRect(x: 20, y: 40 + yellowView.frame.height + navHeight, width: size.width / 2 - 30, height: yellowView.frame.height)
         
-        //Red View
         redView.frame = CGRect(x: 40 + greenView.frame.width, y: greenView.frame.minY, width: greenView.frame.width, height: greenView.frame.height)
     }
     
@@ -95,9 +91,7 @@ class ViewController: UIViewController {
             coordinator.animate(alongsideTransition: nil, completion: {
                 _ in
                 
-                //For some reason, the size property sometimes doesn't fill the whole view. It's inconsistent.
-                let newSize = CGSize(width: self.view.bounds.width, height: self.view.bounds.height)
-                self.setupViewsLandscape(withSize: newSize)
+                self.setupViewsLandscape(withSize: size)
             })
         } else {
             coordinator.animate(alongsideTransition: nil, completion: {
